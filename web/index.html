@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punto y Barra — Numerales Mayas en Línea</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+    }
+    .demo-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .demo-section h2 {
+      margin-top: 0;
+      color: #34495e;
+    }
+    .mayanumber {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      background: #ecf0f1;
+      border-radius: 4px;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    .mayanumber svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .controls {
+      background: #e8f4f8;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .controls label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    .controls input, .controls select {
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #bdc3c7;
+      border-radius: 4px;
+      width: 200px;
+    }
+    .controls button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background: #2980b9;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      min-height: 150px;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .paleta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    .paleta-table th, .paleta-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .paleta-table th {
+      background: #34495e;
+      color: white;
+    }
+    .color-swatch {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .credit {
+      margin-top: 40px;
+      padding: 15px;
+      background: #ecf0f1;
+      border-left: 4px solid #3498db;
+      font-size: 14px;
+    }
+    code {
+      background: #e8e8e8;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      h1 { font-size: 1.6em; }
+      .controls input, .controls select { width: 100%; }
+      .demo-section { padding: 12px; }
+      .paleta-table th, .paleta-table td { padding: 6px; font-size: 13px; }
+      .color-swatch { width: 24px; height: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🌽 Punto y Barra</h1>
+  <p><strong>Numerales mayas y aritmética vigesimal con colores por piso</strong></p>
+
+  <div class="controls">
+    <h2>Conversor Interactivo</h2>
+    <label for="input-number">Número decimal:</label>
+    <input type="text" id="input-number" value="1234567890" placeholder="Ej: 4581">
+    
+    <label for="layout">Disposición:</label>
+    <select id="layout">
+      <option value="vertical">Vertical (apilado)</option>
+      <option value="horizontal">Horizontal</option>
+    </select>
+    
+    <label for="nocolor">
+      <input type="checkbox" id="nocolor"> Sin colores
+    </label>
+    
+    <button onclick="convert()">Convertir</button>
+  </div>
+
+  <div id="output">
+    <div class="mayanumber" data-value="1234567890" data-layout="vertical"></div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Ejemplos estáticos</h2>
+    <p><strong>Vertical con colores (default):</strong></p>
+    <div class="mayanumber" data-value="4581"></div>
+    
+    <p><strong>Horizontal con colores:</strong></p>
+    <div class="mayanumber" data-value="2187624240" data-layout="horizontal"></div>
+    
+    <p><strong>Ciclo completo de 7 pisos:</strong></p>
+    <div class="mayanumber" data-value="1234567890"></div>
+    
+    <p><strong>Sin colores:</strong></p>
+    <div class="mayanumber" data-value="4581" data-nocolor="true"></div>
+  </div>
+
+  <div class="demo-section">
+    <h2>🎨 Paleta de colores (ciclo de 7 pisos)</h2>
+    <table class="paleta-table">
+      <thead>
+        <tr>
+          <th>Posición</th>
+          <th>Color</th>
+          <th>Nombre</th>
+          <th>Significado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>6 (64 000 000)</td>
+          <td><span class="color-swatch" style="background:#6A0DAD"></span>#6A0DAD</td>
+          <td>Morado</td>
+          <td>el universo</td>
+        </tr>
+        <tr>
+          <td>5 (3 200 000)</td>
+          <td><span class="color-swatch" style="background:#DAA520"></span>#DAA520</td>
+          <td>Amarillo</td>
+          <td>la luz, el sol</td>
+        </tr>
+        <tr>
+          <td>4 (160 000)</td>
+          <td><span class="color-swatch" style="background:#87CEEB"></span>#87CEEB</td>
+          <td>Azul claro</td>
+          <td>el cielo</td>
+        </tr>
+        <tr>
+          <td>3 (8 000)</td>
+          <td><span class="color-swatch" style="background:#DC143C"></span>#DC143C</td>
+          <td>Rojo</td>
+          <td>la vida</td>
+        </tr>
+        <tr>
+          <td>2 (400)</td>
+          <td><span class="color-swatch" style="background:#2E8B57"></span>#2E8B57</td>
+          <td>Verde</td>
+          <td>la vegetación</td>
+        </tr>
+        <tr>
+          <td>1 (20)</td>
+          <td><span class="color-swatch" style="background:#005B96"></span>#005B96</td>
+          <td>Azul profundo</td>
+          <td>el agua</td>
+        </tr>
+        <tr>
+          <td>0 (unidades)</td>
+          <td><span class="color-swatch" style="background:#8B4513"></span>#8B4513</td>
+          <td>Café</td>
+          <td>la tierra</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>La tabla se lee como se apila un número maya: de la tierra (abajo) al universo (arriba); pasados los 7 pisos, el ciclo se repite.</em></p>
+  </div>
+
+  <div class="credit">
+    <h3>Créditos</h3>
+    <p>Lógica original de la conversión y el coloreado por pisos: macro de <strong>@egreg</strong> en 
+    <a href="https://tex.stackexchange.com/a/452806/18280" target="_blank">TeX StackExchange</a>, 
+    respuesta a una pregunta de <strong>tatojo</strong>.</p>
+    <p>Adaptación y extensión: <strong>Manuel López Mateos</strong> (mlmateos).</p>
+    <p>Código fuente: <a href="https://github.com/mlmateos/puntoybarra" target="_blank">github.com/mlmateos/puntoybarra</a></p>
+  </div>
+
+  <script src="mayanumber.js"></script>
+  <script>
+    function convert() {
+      const value = document.getElementById('input-number').value;
+      const layout = document.getElementById('layout').value;
+      const nocolor = document.getElementById('nocolor').checked;
+
+      const output = document.getElementById('output');
+      output.innerHTML = '<div class="mayanumber" data-value="' + value +
+        '" data-layout="' + layout + '"' +
+        (nocolor ? ' data-nocolor="true"' : '') + '></div>';
+
+      MayanNumber.process(output.querySelector('.mayanumber'));
+    }
+  </script>
+</body>
+</html>

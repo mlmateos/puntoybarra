@@ -1,0 +1,13 @@
+# LaTeX auxiliares (generados por xelatex/lualatex)
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

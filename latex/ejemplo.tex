@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage{mayanumber}   % el .sty está en este mismo directorio
+\begin{document}
+\section*{Pruebas de \texttt{mayanumber}}
+Default (vertical, color): \mayanumber{4581}\par
+Horizontal: \mayanumber[horizontal]{4581}\par
+Sin color: \mayanumber[nocolor]{4581}\par
+Escala 2: \mayanumber[scale=2]{4581}\par
+Alfabético: \mayanumber*{4581} \quad \mayanumber*[nocolor]{4581}\par
+
+OJO: Ciclo completo de 7 pisos: \mayanumber{1234567890}\par
+Sin límite de magnitud: \mayanumber[scale=2]{2187624240}
+\end{document}
