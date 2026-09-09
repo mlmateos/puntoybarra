@@ -1,0 +1,127 @@
+% mayanumber-doc.tex — package documentation
+% Compile twice with: xelatex mayanumber-doc.tex
+\documentclass[11pt]{article}
+
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{mayanumber}      % the package under documentation
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=mayaAgua, urlcolor=mayaAgua}
+
+\title{\textbf{mayanumber}\\[4pt]
+  \large Mayan numerals and vigesimal notation\\ with positional floor colors\\[6pt]
+  version 1.0 --- 2026-09-09}
+\author{Manuel López Mateos\\ \url{https://github.com/mlmateos}}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}\noindent
+The \texttt{mayanumber} package converts decimal integers of \emph{any}
+magnitude into (a)~Mayan numerals (dots and bars, Unicode block
+U+1D2E0--U+1D2F3) and (b)~vigesimal alphabetic notation (0--9, A--J),
+coloring each positional \emph{floor} with a cycle of seven colors:
+earth, water, vegetation, life, sky, sun, universe.
+\end{abstract}
+
+\section{Requirements and installation}
+
+XeLaTeX or LuaLaTeX. The package loads \texttt{xcolor} and \texttt{fontspec}
+by itself. It requires the free font \emph{BabelStone Mayan Numerals}
+(\url{https://www.babelstone.co.uk/Fonts/}). To use another face, declare it
+\emph{before} loading the package:
+
+\begin{verbatim}
+\newfontface{\mayanumerals}{Noto Sans Mayan Numerals}
+\usepackage{mayanumber}
+\end{verbatim}
+
+Installation: drop \texttt{mayanumber.sty} next to your document, or into
+\texttt{tex/latex/mayanumber/} of your local TEXMF tree.
+
+\section{The command and its options}
+
+\begin{verbatim}
+\mayanumber{4581}                    % vertical + colors (default)
+\mayanumber[horizontal]{4581}        % floors in a row, MSB left
+\mayanumber[nocolor]{4581}           % plain glyphs
+\mayanumber[nocolor, scale=3]{4581}  % options combine freely
+\mayanumber[align=t]{4581}           % vertical alignment: c, t, b
+\mayanumber*{4581}                   % alphabetic: B91 with subscript 20
+\end{verbatim}
+
+\begin{center}
+\begin{tabular}{lllp{6cm}}
+\textbf{Key} & \textbf{Values} & \textbf{Default} & \textbf{Meaning}\\\hline
+\texttt{vertical} / \texttt{horizontal} & -- & vertical & stack floors, or lay them in a row\\
+\texttt{colors} / \texttt{nocolor} & -- & colors & seven-color cycle on/off\\
+\texttt{scale} & number & 1 & font scale\\
+\texttt{align} & c, t, b & c & vertical alignment of the stack\\
+\end{tabular}
+\end{center}
+
+Every call resets to the defaults before applying its own options, so no
+state leaks between calls.
+
+\section{The seven-floor color cycle}
+
+Floors are colored from the bottom up (and right to left in horizontal mode):
+
+\begin{center}
+	\begin{tabular}{rlll}
+		\textbf{Floor} & \textbf{Swatch} & \textbf{Name} & \textbf{Meaning}\\\hline
+		6 & \colorbox{mayaUniverso}{\strut\hspace{1em}} & \#6A0DAD & the universe\\
+		5 & \colorbox{mayaSol}{\strut\hspace{1em}} & \#DAA520 & light, the sun\\
+		4 & \colorbox{mayaCielo}{\strut\hspace{1em}} & \#87CEEB & the sky\\
+		3 & \colorbox{mayaVida}{\strut\hspace{1em}} & \#DC143C & life\\
+		2 & \colorbox{mayaVegetacion}{\strut\hspace{1em}} & \#2E8B57 & vegetation\\
+		1 & \colorbox{mayaAgua}{\strut\hspace{1em}} & \#005B96 & water\\
+		0 & \colorbox{mayaTierra}{\strut\hspace{1em}} & \#8B4513 & the earth\\
+	\end{tabular}\\[4pt]
+	\emph{The table reads like a Mayan stack: the earth below, the universe above.}
+\end{center}
+
+\noindent Beyond floor~6 the cycle repeats: the universe becomes earth again.
+The two blues differ in luminosity on purpose: water is deep and saturated,
+sky is light and airy. The colors are declared with \verb|\providecolor|
+(\texttt{mayaTierra}, \texttt{mayaAgua}, \dots), so users may redefine them
+before loading the package.
+
+\section{Examples}
+
+\begin{center}
+\mayanumber{4581}\qquad
+\mayanumber[horizontal]{4581}\qquad
+\mayanumber[nocolor]{4581}\qquad
+\mayanumber*{4581}
+\end{center}
+
+\begin{center}
+Seven floors, full cycle: \mayanumber[horizontal]{1234567890}\\[6pt]
+Beyond 32 bits: \mayanumber[horizontal]{2187624240}
+\end{center}
+
+\section{How it works}
+
+The decimal input is kept as a \emph{string} and divided by~20 with the
+schoolbook long-division algorithm, digit by digit; the final remainder is
+the floor digit and the quotient recurses until exhausted. All intermediate
+values stay below~210, so TeX's 32-bit integer limit never applies and the
+magnitude is unbounded. The color index of floor~$p$ is
+$((p \bmod 7)+7) \bmod 7 + 1$, a residue guaranteed positive.
+
+\section{Credits and license}
+
+Original macro by \textbf{@egreg}, TeX StackExchange, in answer to a question
+by \textbf{tatojo}: \url{https://tex.stackexchange.com/a/452806/18280}.
+Extensions (seven-color cycle, vertical+color defaults, \texttt{nocolor},
+unlimited magnitude) by Manuel López Mateos, 2026.
+License: MIT; see the accompanying \texttt{LICENSE}.
+
+\section{History}
+
+\begin{tabular}{ll}
+1.0 & 2026-09-09 --- first public release (GitHub and CTAN).\\
+\end{tabular}
+
+\end{document}
