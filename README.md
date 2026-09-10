@@ -158,6 +158,8 @@ Pasado el piso 6 el ciclo se repite: el universo vuelve a ser tierra.
 \mayanumber*{4581}                     % alfabético: B91 en base 20
 ```
 
+Included in TeX Live; install with `tlmgr install mayanumber` or let your collection pull it automatically
+
 **Python (precisión ilimitada)**
 
 ```bash
