@@ -65,6 +65,8 @@ Beyond floor 6 the cycle repeats: the universe becomes earth again.
 \mayanumber*{4581}                     % alphabetic: B91 base-20
 ```
 
+Included in TeX Live; install with `tlmgr install mayanumber` or let your collection pull it automatically.
+
 **Python (unlimited precision)**
 
 ```bash
@@ -158,7 +160,7 @@ Pasado el piso 6 el ciclo se repite: el universo vuelve a ser tierra.
 \mayanumber*{4581}                     % alfabético: B91 en base 20
 ```
 
-Included in TeX Live; install with `tlmgr install mayanumber` or let your collection pull it automatically
+Incluido en TeX Live; se instala con `tlmgr install mayanumber` o deja que tu `collection` la jale de manera automática.
 
 **Python (precisión ilimitada)**
 
