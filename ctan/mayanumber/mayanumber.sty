@@ -13,7 +13,7 @@
 %% LICENCIA: MIT (véase LICENSE del repositorio puntoybarra).
 %%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mayanumber}[2026-09-09 v1.0.0 Numerales mayas y base 20 con colores por piso]
+\ProvidesPackage{mayanumber}[2026/09/29 v1.0.1 Mayan numerals and base 20 with positional colors]
 
 \RequirePackage{iftex}
 \unless\ifXeTeX
@@ -27,21 +27,25 @@
 \RequirePackage{xcolor}
 \RequirePackage{fontspec}
 
-% Fuente de glifos (bloque Unicode U+1D2E0–U+1D2F3).
-% Solo se declara si el usuario no la definió antes con otro nombre.
-\@ifundefined{mayanumerals}
-  {\newfontface{\mayanumerals}{BabelStone Mayan Numerals}}
-  {}
-
-% Paleta de 7 colores por piso posicional.
-% \providecolor permite que el usuario la redefina ANTES de cargar el paquete.
-\providecolor{mayaTierra}{HTML}{8B4513}      % pos 0: la tierra
-\providecolor{mayaAgua}{HTML}{005B96}        % pos 1: el agua (azul profundo)
-\providecolor{mayaVegetacion}{HTML}{2E8B57}  % pos 2: la vegetación
-\providecolor{mayaVida}{HTML}{DC143C}        % pos 3: la vida
-\providecolor{mayaCielo}{HTML}{87CEEB}       % pos 4: el cielo (azul claro)
-\providecolor{mayaSol}{HTML}{DAA520}         % pos 5: la luz, el sol
-\providecolor{mayaUniverso}{HTML}{6A0DAD}    % pos 6: el universo
+% Configuración diferida hasta begindocument/before
+% Permite al usuario definir fuentes y colores en cualquier parte del preámbulo
+\AddToHook{begindocument/before}{%
+  % Fuente de glifos (bloque Unicode U+1D2E0–U+1D2F3).
+  % Solo se declara si el usuario no la definió antes con otro nombre.
+  \@ifundefined{mayanumerals}
+    {\newfontface{\mayanumerals}{BabelStone Mayan Numerals}}
+    {}%
+  %
+  % Paleta de 7 colores por piso posicional.
+  % \providecolor permite que el usuario la redefina ANTES de cargar el paquete.
+  \providecolor{mayaTierra}{HTML}{8B4513}%
+  \providecolor{mayaAgua}{HTML}{005B96}%
+  \providecolor{mayaVegetacion}{HTML}{2E8B57}%
+  \providecolor{mayaVida}{HTML}{DC143C}%
+  \providecolor{mayaCielo}{HTML}{87CEEB}%
+  \providecolor{mayaSol}{HTML}{DAA520}%
+  \providecolor{mayaUniverso}{HTML}{6A0DAD}%
+}
 
 \ExplSyntaxOn
 
@@ -108,12 +112,12 @@
 {
   \bool_if:NTF \l__tatojo_maya_color_bool
     {
-      \tl_set:Nx \l__tatojo_maya_color_tl
+      \tl_set:Ne \l__tatojo_maya_color_tl
         {
           \clist_item:Nn \c__tatojo_maya_colors_clist
             { \int_eval:n { \int_mod:nn { \int_mod:nn { \l__tatojo_maya_pos_int } { 7 } + 7 } { 7 } + 1 } }
         }
-      \seq_put_left:Nx \l__tatojo_maya_digits_seq
+      \seq_put_left:Ne \l__tatojo_maya_digits_seq
         {
           \exp_not:N \textcolor { \l__tatojo_maya_color_tl }
             { \exp_not:N \symbol
@@ -121,7 +125,7 @@
         }
     }
     {
-      \seq_put_left:Nx \l__tatojo_maya_digits_seq
+      \seq_put_left:Ne \l__tatojo_maya_digits_seq
         {
           \exp_not:N \symbol
             { \int_eval:n { \c__tatojo_maya_start_int + \l__tatojo_maya_digit_int } }
@@ -134,19 +138,19 @@
 {
   \bool_if:NTF \l__tatojo_maya_color_bool
     {
-      \tl_set:Nx \l__tatojo_maya_color_tl
+      \tl_set:Ne \l__tatojo_maya_color_tl
         {
           \clist_item:Nn \c__tatojo_maya_colors_clist
             { \int_eval:n { \int_mod:nn { \int_mod:nn { \l__tatojo_maya_pos_int } { 7 } + 7 } { 7 } + 1 } }
         }
-      \tl_put_left:Nx \l__tatojo_maya_result_tl
+      \tl_put_left:Ne \l__tatojo_maya_result_tl
         {
           { \exp_not:N \color { \l__tatojo_maya_color_tl }
               \clist_item:Nn \c__tatojo_maya_alpha_clist { \l__tatojo_maya_digit_int + 1 } }
         }
     }
     {
-      \tl_put_left:Nx \l__tatojo_maya_result_tl
+      \tl_put_left:Ne \l__tatojo_maya_result_tl
         { \clist_item:Nn \c__tatojo_maya_alpha_clist { \l__tatojo_maya_digit_int + 1 } }
     }
 }
@@ -182,11 +186,11 @@
             \int_set:Nn \l__tatojo_maya_q_int
               { ( \l__tatojo_maya_x_int - \l__tatojo_maya_rem_int ) / 20 }
             \bool_if:NTF \l__tatojo_maya_started_bool
-              { \tl_put_right:Nx \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } } }
+              { \tl_put_right:Ne \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } } }
               {
                 \int_compare:nNnF \l__tatojo_maya_q_int = { 0 }
                   {
-                    \tl_put_right:Nx \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } }
+                    \tl_put_right:Ne \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } }
                     \bool_set_true:N \l__tatojo_maya_started_bool
                   }
               }
@@ -210,9 +214,13 @@
   }
 }
 
+
+% ----------------------------------------------------------------------------
 % Notación alfabética: mismo bucle, acumulando letras coloreadas
+% ----------------------------------------------------------------------------
 \cs_new_protected:Nn \tatojo_maya_alphabetic:nn
 {
+  \group_begin:  % ← LÍNEA AGREGADA
   \keys_set:nn { tatojo/maya } { #1 }
   \tl_clear:N \l__tatojo_maya_result_tl
   \int_zero:N \l__tatojo_maya_pos_int
@@ -231,11 +239,11 @@
           \int_set:Nn \l__tatojo_maya_q_int
             { ( \l__tatojo_maya_x_int - \l__tatojo_maya_rem_int ) / 20 }
           \bool_if:NTF \l__tatojo_maya_started_bool
-            { \tl_put_right:Nx \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } } }
+            { \tl_put_right:Ne \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } } }
             {
               \int_compare:nNnF \l__tatojo_maya_q_int = { 0 }
                 {
-                  \tl_put_right:Nx \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } }
+                  \tl_put_right:Ne \l__tatojo_maya_quot_tl { \int_eval:n { \l__tatojo_maya_q_int } }
                   \bool_set_true:N \l__tatojo_maya_started_bool
                 }
             }
@@ -250,6 +258,7 @@
     }
 
   \ensuremath { \mathrm { \l__tatojo_maya_result_tl } \sb{20} }
+  \group_end:  % ← LINEA AGREGADA
 }
 
 \ExplSyntaxOff
