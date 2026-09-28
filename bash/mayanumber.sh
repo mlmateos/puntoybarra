@@ -3,7 +3,7 @@
 # alfabético, con colores por piso posicional (ciclo de 7). Puro bash.
 #
 # CRÉDITOS:
-#   Lógica original: macro de @egreg en TeX StackExchange, respuesta a una
+#   Lógica original: macro de Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub) en TeX StackExchange, respuesta a una
 #   pregunta de tatojo: https://tex.stackexchange.com/a/452806/18280
 #   Adaptación a bash y paleta de 7 colores: Manuel López Mateos (mlmateos),
 #   repositorio puntoybarra.

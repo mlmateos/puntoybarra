@@ -8,7 +8,7 @@ con colores por piso posicional (ciclo de 7 colores).
 
 CRÉDITOS:
   Lógica original de la conversión y el coloreado por pisos:
-  macro de @egreg en TeX StackExchange, respuesta a una pregunta de tatojo:
+  macro de Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub) en TeX StackExchange, respuesta a una pregunta de tatojo:
   https://tex.stackexchange.com/a/452806/18280
   Adaptación a Python y paleta de 7 colores: Manuel López Mateos (mlmateos),
   repositorio puntoybarra.
@@ -111,7 +111,7 @@ def render_alpha(digits: list, use_color: bool) -> str:
 def main() -> None:
     p = argparse.ArgumentParser(
         description="Conversor decimal → vigesimal maya y alfabético, con colores por piso.",
-        epilog="Lógica original: @egreg (TeX SE, a/452806). Repo: mlmateos/puntoybarra.")
+        epilog="Lógica original: Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub) (TeX SE, a/452806). Repo: mlmateos/puntoybarra.")
     p.add_argument("numero", nargs="?", help="Número decimal (sin límite de dígitos)")
     p.add_argument("--horizontal", action="store_true", help="Pisos en línea (default: vertical)")
     p.add_argument("--nocolor", action="store_true", help="Desactiva los colores")

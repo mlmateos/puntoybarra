@@ -15,7 +15,7 @@ with a seven-color cycle.
 
 ### Origin and credits
 
-- Original conversion logic and floor coloring: macro by **@egreg**, TeX
+- Original conversion logic and floor coloring: macro by **Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub)**, TeX
   StackExchange, answer to a question by **tatojo**:
   <https://tex.stackexchange.com/a/452806/18280>
 - Extensions (seven-color palette, vertical+color defaults, `nocolor`,
@@ -110,7 +110,7 @@ posicional con un ciclo de siete colores.
 
 ### Origen y créditos
 
-- Lógica original de conversión y coloreado por piso: macro de **@egreg** en
+- Lógica original de conversión y coloreado por piso: macro de **Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub)** en
   TeX StackExchange, respuesta a una pregunta de **tatojo**:
   <https://tex.stackexchange.com/a/452806/18280>
 - Extensiones (paleta de 7 colores, vertical+color por defecto, `nocolor`,

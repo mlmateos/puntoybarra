@@ -2,7 +2,7 @@ MIT License
 
 Copyright (c) 2026 Manuel López Mateos (mlmateos)
 
-This project includes and extends the original LaTeX macro by @egreg,
+This project includes and extends the original LaTeX macro by Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub),
 published in TeX StackExchange (https://tex.stackexchange.com/a/452806/18280)
 in response to a question by tatojo. The original macro is redistributed here
 under the same terms, with attribution.

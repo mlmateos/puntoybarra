@@ -2,7 +2,7 @@
  * mayanumber.js — Widget web para numerales mayas y notación vigesimal
  * 
  * CRÉDITOS:
- *   Lógica original: macro de @egreg en TeX StackExchange, respuesta a una
+ *   Lógica original: macro de Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub) en TeX StackExchange, respuesta a una
  *   pregunta de tatojo: https://tex.stackexchange.com/a/452806/18280
  *   Adaptación a JavaScript y widget SVG: Manuel López Mateos (mlmateos),
  *   repositorio puntoybarra.

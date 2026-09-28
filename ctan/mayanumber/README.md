@@ -23,7 +23,7 @@ Files:
   LICENSE             MIT, with attribution to the original macro
 
 Credits:
-  Original macro by @egreg, TeX StackExchange, answer to a question by tatojo:
+  Original macro by Enrico Gregorio (egreg on TeX StackExchange, @eg9 on GitHub), TeX StackExchange, answer to a question by tatojo:
   https://tex.stackexchange.com/a/452806/18280
   Extensions (seven-color cycle, defaults, nocolor, unlimited magnitude):
   Manuel López Mateos, 2026.
