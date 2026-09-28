@@ -9,13 +9,15 @@ significado, de abajo hacia arriba:
 
 | Piso | Potencia | Color | HEX | Significado |
 |---:|---|---|---|---|
-| 0 | 20⁰ | café | `#8B4513` | la tierra |
-| 1 | 20¹ | azul profundo | `#005B96` | el agua |
-| 2 | 20² | verde | `#2E8B57` | la vegetación |
-| 3 | 20³ | rojo | `#DC143C` | la vida |
-| 4 | 20⁴ | azul claro | `#87CEEB` | el cielo |
-| 5 | 20⁵ | amarillo | `#DAA520` | la luz, el sol |
 | 6 | 20⁶ | morado | `#6A0DAD` | el universo |
+| 5 | 20⁵ | amarillo | `#DAA520` | la luz, el sol |
+| 4 | 20⁴ | azul claro | `#87CEEB` | el cielo |
+| 3 | 20³ | rojo | `#DC143C` | la vida |
+| 2 | 20² | verde | `#2E8B57` | la vegetación |
+| 1 | 20¹ | azul profundo | `#005B96` | el agua |
+| 0 | 20⁰ | café | `#8B4513` | la tierra |
+
+*La tabla se lee como se apila un número maya: de la tierra (abajo) al universo (arriba).*
 
 ### Reglas de lectura
 
@@ -35,16 +37,16 @@ pisa y la que se mira.
 
 | Piso | LaTeX (`xcolor`) | Python / bash / web |
 |---:|---|---|
-| 0 | `mayaTierra` | `tierra` |
-| 1 | `mayaAgua` | `agua` |
-| 2 | `mayaVegetacion` | `vegetacion` |
-| 3 | `mayaVida` | `vida` |
-| 4 | `mayaCielo` | `cielo` |
-| 5 | `mayaSol` | `sol` |
 | 6 | `mayaUniverso` | `universo` |
+| 5 | `mayaSol` | `sol` |
+| 4 | `mayaCielo` | `cielo` |
+| 3 | `mayaVida` | `vida` |
+| 2 | `mayaVegetacion` | `vegetacion` |
+| 1 | `mayaAgua` | `agua` |
+| 0 | `mayaTierra` | `tierra` |
 
 En LaTeX los colores se declaran con `\providecolor`, de modo que el usuario
-puede redefinirlos *antes* de cargar el paquete sin romper nada.
+puede redefinirlos *antes* de `\begin{document}` sin romper nada.
 
 ---
 
@@ -57,13 +59,15 @@ to top:
 
 | Floor | Power | Color | HEX | Meaning |
 |---:|---|---|---|---|
-| 0 | 20⁰ | brown | `#8B4513` | the earth |
-| 1 | 20¹ | deep blue | `#005B96` | water |
-| 2 | 20² | green | `#2E8B57` | vegetation |
-| 3 | 20³ | red | `#DC143C` | life |
-| 4 | 20⁴ | light blue | `#87CEEB` | the sky |
-| 5 | 20⁵ | yellow | `#DAA520` | light, the sun |
 | 6 | 20⁶ | purple | `#6A0DAD` | the universe |
+| 5 | 20⁵ | yellow | `#DAA520` | light, the sun |
+| 4 | 20⁴ | light blue | `#87CEEB` | the sky |
+| 3 | 20³ | red | `#DC143C` | life |
+| 2 | 20² | green | `#2E8B57` | vegetation |
+| 1 | 20¹ | deep blue | `#005B96` | water |
+| 0 | 20⁰ | brown | `#8B4513` | the earth |
+
+*The table reads like a Mayan stack: from the earth (bottom) to the universe (top).*
 
 ### Reading rules
 
@@ -83,13 +87,13 @@ you step on and the one you look at.
 
 | Floor | LaTeX (`xcolor`) | Python / bash / web |
 |---:|---|---|
-| 0 | `mayaTierra` | `tierra` |
-| 1 | `mayaAgua` | `agua` |
-| 2 | `mayaVegetacion` | `vegetacion` |
-| 3 | `mayaVida` | `vida` |
-| 4 | `mayaCielo` | `cielo` |
-| 5 | `mayaSol` | `sol` |
 | 6 | `mayaUniverso` | `universo` |
+| 5 | `mayaSol` | `sol` |
+| 4 | `mayaCielo` | `cielo` |
+| 3 | `mayaVida` | `vida` |
+| 2 | `mayaVegetacion` | `vegetacion` |
+| 1 | `mayaAgua` | `agua` |
+| 0 | `mayaTierra` | `tierra` |
 
 In LaTeX the colors are declared with `\providecolor`, so the user can
-redefine them *before* loading the package without breaking anything.
+redefine them *before* `\begin{document}` without breaking anything.
