@@ -1,0 +1,9 @@
+\documentclass{article}
+\usepackage{mayanumber}
+% Antes esto era imposible: declarar fuente y colores DESPUÉS del paquete
+\newfontface{\mayanumerals}{BabelStone Mayan Numerals}
+\definecolor{mayaVida}{HTML}{FF00FF}   % magenta chillón, solo para probar
+\begin{document}
+Piso 3 en magenta: \mayanumber{8000}\par
+Horizontal heredado: \mayanumber[horizontal]{1234567890}
+\end{document}

@@ -9,7 +9,7 @@
 
 \title{\textbf{mayanumber}\\[4pt]
   \large Mayan numerals and vigesimal notation\\ with positional floor colors\\[6pt]
-  version 1.0 --- 2026-09-09}
+  version 1.0.2 --- 2026-09-29}
 \author{Manuel López Mateos\\ \url{https://github.com/mlmateos}}
 \date{}
 
@@ -28,12 +28,15 @@ earth, water, vegetation, life, sky, sun, universe.
 
 XeLaTeX or LuaLaTeX. The package loads \texttt{xcolor} and \texttt{fontspec}
 by itself. It requires the free font \emph{BabelStone Mayan Numerals}
-(\url{https://www.babelstone.co.uk/Fonts/}). To use another face, declare it
-\emph{before} loading the package:
+(\url{https://www.babelstone.co.uk/Fonts/}). Since version 1.0.1 the
+configuration is deferred to \verb|\AddToHook{begindocument/before}|, so
+another face (or custom colors) may be declared \emph{anywhere} in the
+preamble:
 
 \begin{verbatim}
-\newfontface{\mayanumerals}{Noto Sans Mayan Numerals}
 \usepackage{mayanumber}
+\newfontface{\mayanumerals}{Noto Sans Mayan Numerals}
+\definecolor{mayaTierra}{HTML}{A0522D}
 \end{verbatim}
 
 Installation: drop \texttt{mayanumber.sty} next to your document, or into
@@ -121,7 +124,11 @@ License: MIT; see the accompanying \texttt{LICENSE}.
 \section{History}
 
 \begin{tabular}{ll}
-1.0 & 2026-09-09 --- first public release (GitHub and CTAN).\\
+1.0.2 & 2026-09-29 --- documentation aligned with the 1.0.1 code base.\\
+1.0.1 & 2026-09-28 --- improvements suggested by Enrico Gregorio:
+        deferred configuration, e-expansion, group locality;
+        documentation tables in physical stack order.\\
+1.0   & 2026-09-09 --- first public release (GitHub and CTAN).\\
 \end{tabular}
 
 \end{document}
