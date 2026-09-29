@@ -30,4 +30,4 @@ Credits:
 
 Source and development: https://github.com/mlmateos/puntoybarra
 
-Version 1.0.1, 2026-09-29
+Version 1.0.2, 2026-09-29
