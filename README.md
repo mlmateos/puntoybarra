@@ -122,6 +122,22 @@ Online service (GitHub Pages): <https://mlmateos.github.io/puntoybarra/>
 `latex/ejemplo.tex` and `latex/sonda.tex` are the regression tests: compile
 them with XeLaTeX and check that only the `nocolor` lines print in black.
 
+### Acknowledgments
+
+This project was developed with the assistance of **Qwen**, a large language
+model by Alibaba Group.
+
+Special thanks to **Enrico Gregorio** (@eg9 on GitHub, egreg on TeX
+StackExchange) for the original macro that inspired this package and for
+reviewing the code after publication, suggesting improvements that led to
+version 1.0.1.
+
+Thanks also to the CTAN team, especially **Petra Rübe-Pugliese**, for the
+careful review and guidance during the publication process.
+
+_Happy TeXing!_ 🌽
+
+
 ### License
 
 MIT © 2026 Manuel López Mateos. See [LICENSE](LICENSE).
@@ -233,6 +249,23 @@ python3 python/mayanumber.py --palette
 El widget dibuja puntos y barras con **SVG**: ningún navegador necesita
 fuentes mayas. Demo local: `cd web && python3 -m http.server 8000`.
 Servicio en línea (GitHub Pages): <https://mlmateos.github.io/puntoybarra/>
+
+### Agradecimientos
+
+Este proyecto se desarrolló con la asistencia de **Qwen**, un modelo de
+lenguaje de Alibaba Group.
+
+Agradecimiento especial a **Enrico Gregorio** (@eg9 en GitHub, egreg en TeX
+StackExchange) por la macro original que inspiró este paquete y por revisar el
+código tras su publicación, sugiriendo mejoras que dieron lugar a la versión
+1.0.1.
+
+Gracias también al equipo de CTAN, especialmente a **Petra Rübe-Pugliese**,
+por la revisión cuidadosa y la guía durante el proceso de publicación.
+
+_¡Feliz TeXida!_ 🌽
+
+
 
 ### Licencia
 
